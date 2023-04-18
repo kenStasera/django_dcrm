@@ -2,4 +2,29 @@
 
 {% block content  %}
 <h1>Register</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% if form.erros %}
+        <div class="alert alert-warning 
+        alert-dismissible fade show" role="alert">
+        your form has erros
+
+        {% for field in form %}
+            {% if field.errors %}
+                {{field.erros}}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+        </div>
+
+    
+    
+    <div class="col-md-6 offset-md-3">
+        {{form.as_p}}
+        <input type="submit">
+    </div>
+   
+
+</form>
 {% endblock %}
